@@ -1,26 +1,13 @@
 <div class="container body-content">
-  <div class="jumbotron">
-    <h1>BrainWare Orders</h1>
+  <div class="rounded-3 bg-body-secondary p-5 my-4">
+    <h1>{{ title }}</h1>
     <p class="lead">This is the BrainWare orders page! Welcome</p>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Your Orders</h2>
-      <div id="orders"></div>
-    </div>
-  </div>
-  <ul>
-    <li *ngFor="let order of orders">
-      {{order.dscription}} (Total: ${{order.orderTotal}})
-      <ul>
-        <li *ngFor="let orderProduct of order.orderProducts">
-          {{orderProduct.product.name}} ({{orderProduct.quantity}} &#64; ${{orderProduct.price}}/ea)
-        </li>
-      </ul>
-    </li>
-  </ul>
+
+  <web-app-orders></web-app-orders>
+
   <hr />
   <footer>
-    <p>&copy; {{year}} - BrainWare, Inc</p>
+    <p>&copy; {{ year }} - BrainWare, Inc</p>
   </footer>
 </div>

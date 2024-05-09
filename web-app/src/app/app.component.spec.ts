@@ -1,11 +1,19 @@
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+
+@Component({
+  selector: 'web-app-orders',
+  template: '<p>Mock Orders Component</p>'
+})
+class MockOrdersComponent { }
+
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, RouterTestingModule],
+      declarations: [AppComponent, MockOrdersComponent],
+
     }).compileComponents();
   });
 
@@ -14,13 +22,14 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome web-app'
+      'BrainWare Orders'
     );
   });
 
-  it(`should have as title 'web-app'`, () => {
+  it(`should have as title 'BrainWare Orders'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('web-app');
+    expect(app.title).toEqual('BrainWare Orders');
   });
+
 });

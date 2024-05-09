@@ -10,6 +10,7 @@
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "define": { "API_URL": "'http://localhost:54730'" },
         "outputPath": "dist/web-app",
         "index": "./src/index.html",
         "browser": "./src/main.ts",
@@ -46,9 +47,6 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
-      "options": {
-        "proxyConfig": "./proxy.conf.json"
-      },
       "configurations": {
         "production": {
           "buildTarget": "web-app:build:production"

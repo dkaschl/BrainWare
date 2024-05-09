@@ -1,21 +1,27 @@
 ﻿namespace Api.Controllers
 {
-  using Infrastructure;
-  using Microsoft.AspNetCore.Mvc;
-  using Models;
+    using Api.Infrastructure;
+    using Api.Infrastructure.Service;
+    using Api.Models;
+    using Api.Models.Contracts;
+    using Microsoft.AspNetCore.Mvc;
 
-  [ApiController]
-  [Route("api")]
-  public class OrderController : ControllerBase
-  {
-    [HttpGet]
-    [Route("order/{id}")]
-
-    public IEnumerable<Order> GetOrders(int id = 1)
+    [ApiController]
+    [Route("api/order")]
+    public class OrderController : ControllerBase
     {
-      var data = new OrderService();
 
-      return data.GetOrdersForCompany(id);
+        private readonly IOrderService _orderService;
+
+        public OrderController(IOrderService orderService)
+        {
+            this._orderService = orderService;
+        }
+
+        [HttpGet("{companyId}")]
+        public IEnumerable<OrderSummaryDto> GetOrdersByCompany(int companyId = 1)
+        {
+            return _orderService.GetOrdersByCompany(companyId);
+        }
     }
-  }
 }
